@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Devices and Sensor Data</title>
+</head>
+<body>
+    <h1>Devices and Sensor Data</h1>
+    <ul>
+    {% for device in devices %}
+        <li>
+            <h2>{{ device.name }}</h2>
+            <p>{{ device.description }}</p>
+            <ul>
+            {% for sensor in device.sensors.all %}
+                <li>
+                    <h3>{{ sensor.name }}</h3>
+                    <p>{{ sensor.description }}</p>
+                    <ul>
+                    {% for data in sensor.data.all %}
+                        <li>
+                            <p>Value: {{ data.value }}</p>
+                            <p>Created at: {{ data.created_at }}</p>
+                            <p>Updated at: {{ data.updated_at }}</p>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

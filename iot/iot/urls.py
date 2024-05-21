@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from app.views import DeviceViewSet, SensorViewSet, SensorDataViewSet
+from app.views import DeviceViewSet, SensorViewSet, SensorDataViewSet, devices
 
 from rest_framework.routers import DefaultRouter
 
@@ -29,4 +29,5 @@ router.register(r'sensordata', SensorDataViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('', devices, name='devices')
 ]

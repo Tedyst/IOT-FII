@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework import viewsets
 
 from .models import Device, Sensor, SensorData
@@ -15,3 +16,7 @@ class SensorViewSet(viewsets.ModelViewSet):
 class SensorDataViewSet(viewsets.ModelViewSet):
     queryset = SensorData.objects.all()
     serializer_class = SensorDataSerializer
+
+def devices(request):
+    devices = Device.objects.all()
+    return render(request, 'index.html', {'devices': devices})
